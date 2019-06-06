@@ -10,7 +10,7 @@ class RestAPI {
 
   /* LOGIN REQUESTS */
   registerUser = (dispatch, username, password, email) => {
-    let url = "/register";
+    let url = "/api/register";
     let customer = {
       name: username,
       email: email,
@@ -53,7 +53,7 @@ class RestAPI {
   }
 
   callTokenService = (customer) => {
-    let url = "/token"
+    let url = "/api/token"
     let myHeaders = new Headers({ "Content-Type": "application/json" });
     let body = JSON.stringify(customer);
     console.log("BODY.CUSTOMER: " + JSON.stringify(customer));
@@ -87,7 +87,7 @@ class RestAPI {
         "Authorization": "Bearer " + window.token
       });
     var myInit = { method: 'GET', headers: myHeaders, mode: 'cors' };
-    let promise = fetch("/registrations", myInit);
+    let promise = fetch("/api/registrations", myInit);
     promise.then((response) => {
       return response.text();
     }).then(function (text) {
@@ -98,7 +98,7 @@ class RestAPI {
   }
 
 	putRegistration = ( dispatch, registration ) => {
-		let url = "/registrations/" + registration.id;
+		let url = "/api/registrations/" + registration.id;
     let body = JSON.stringify(registration);
     let myHeaders = new Headers(
       { "Content-Type": "application/json",
@@ -121,7 +121,7 @@ class RestAPI {
 	}
 
   deleteRegistration = ( dispatch, registration ) => {
-    let url = "/registrations/" + registration.id;
+    let url = "/api/registrations/" + registration.id;
     let myHeaders = new Headers(
       { "Content-Type": "application/json",
         "Authorization": "Bearer " + window.token
@@ -144,7 +144,7 @@ class RestAPI {
         "Authorization": "Bearer " + window.token
       });
     var myInit = { method: 'GET', headers: myHeaders, mode: 'cors' };
-    let promise = fetch("/events", myInit);
+    let promise = fetch("/api/events", myInit);
     promise.then((response) => {
       return response.text();
     }).then(function (text) {
@@ -155,7 +155,7 @@ class RestAPI {
   }
 
 	putEvent = ( dispatch, event ) => {
-		let url = "/events/" + event.id;
+		let url = "/api/events/" + event.id;
     let body = JSON.stringify(event);
     let myHeaders = new Headers(
       { "Content-Type": "application/json",
@@ -179,7 +179,7 @@ class RestAPI {
 	}
 
   deleteEvent = ( dispatch, event ) =>  {
-    let url = "/events/" + event.id;
+    let url = "/api/events/" + event.id;
     let myHeaders = new Headers(
       { "Content-Type": "application/json",
         "Authorization": "Bearer " + window.token
@@ -198,7 +198,7 @@ class RestAPI {
   /* CUSTOMER REQUESTS */
   getCustomers = ( dispatch) => {
     var myInit = { method: 'GET', headers: this.myHeaders, mode: 'cors' };
-    let promise = fetch("/customers", myInit);
+    let promise = fetch("/api/customers", myInit);
     promise.then((response) => {
       return response.text();
     }).then(function (text) {
@@ -209,7 +209,7 @@ class RestAPI {
   }
 
   lookupCustomerByName = ( username ) => {
-    let url = "/customers/byname";
+    let url = "/api/customers/byname";
     let body = username;
 
     var myInit = { 
@@ -234,7 +234,7 @@ class RestAPI {
 
 
 	putCustomer = ( dispatch, customer ) => {
-		let url = "/customers/" + customer.id;
+		let url = "/api/customers/" + customer.id;
 		let body = JSON.stringify(customer);
 		var myInit = { 
 		  method: 'PUT',
@@ -253,7 +253,7 @@ class RestAPI {
 	}
 
   deleteCustomer = ( dispatch, customer ) => {
-    let url = "/customers/" + customer.id;
+    let url = "/api/customers/" + customer.id;
     var myInit = { method: 'DELETE', headers: this.myHeaders, mode: 'cors' };
     let getcustomers = this.getCustomers;
     let promise = fetch(url, myInit);
