@@ -109,7 +109,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleEditCancelClick: (e, registration, usage) => {
       console.log("in RegistrationForm.handleEditCancelClick");
-      dispatch(updateRegistrationFormUsage('view'));
+      dispatch(updateRegistrationFormUsage('view', registration));
     },
     handleRegistrationSaveClick: (e, registration, usage) => {
       console.log("in RegistrationForm.handleRegistrationSaveClick: " 

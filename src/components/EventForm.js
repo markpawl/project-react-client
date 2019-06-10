@@ -74,7 +74,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleEditCancelClick: (e, event, usage) => {
         console.log("in EventForm.handleEditCancelClick");
-        dispatch( updateEventFormUsage('view') );        
+        dispatch( updateEventFormUsage('view', event) );        
     },
     handleEventSaveClick: (e, event, usage) => {
         console.log("in EventForm.handleEventSaveClick");
