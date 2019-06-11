@@ -77,7 +77,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleEditCancelClick: (event, customer, usage) => {
         console.log("in CustomerForm.handleEditCancelClick");
-        dispatch( updateCustomerFormUsage('view', customer) );        
+        if(usage === 'add'){
+          dispatch( updateCustomerFormUsage('none') );
+        }else if(usage === 'edit'){
+          dispatch( updateCustomerFormUsage('view', customer) );
+        }     
     },
     handleCustomerSaveClick: (event, customer, usage) => {
         console.log("in CustomerForm.handleCustomerSaveClick");
